@@ -29,7 +29,11 @@ hi QuickScopeSecondary gui=underline
 "   autocmd ColorScheme * highlight QuickScopeSecondary gui=underline
 " augroup END
 
-set guifont=RobotoMono\ Nerd\ Font\ Mono
+if exists('win32')
+	set guifont=RobotoMono_Nerd_Font_Mono:h12
+else
+	set guifont=RobotoMono\ Nerd\ Font\ Mono
+endif
 
 " ########## vim-airline ##########
 let g:airline_powerline_fonts = 1
