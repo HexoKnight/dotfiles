@@ -10,6 +10,8 @@ set guioptions-=e " no gui tabs (only console)
 set guioptions+=a " visual mode allows copying to external clipboard
 set guioptions+=c " use console dialogs instead of popup dialogs
 
+set lines=999 columns=999 " maximise screen
+
 set guicursor=
 	\a:Cursor,
 	\n-v:block,
@@ -27,7 +29,7 @@ hi QuickScopeSecondary gui=underline
 "   autocmd ColorScheme * highlight QuickScopeSecondary gui=underline
 " augroup END
 
-set guifont=RobotoMono_Nerd_Font_Mono:h11
+set guifont=RobotoMono\ Nerd\ Font\ Mono
 
 " ########## vim-airline ##########
 let g:airline_powerline_fonts = 1

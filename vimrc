@@ -192,6 +192,10 @@ set updatetime=1000
 " set completeopt=longest,menuone
 set belloff=wildmode,error,cursor
 
+call mkdir("~/.vim/backup", "p")
+call mkdir("~/.vim/swap", "p")
+call mkdir("~/.vim/undo", "p")
+
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo/
