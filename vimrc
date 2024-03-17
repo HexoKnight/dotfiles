@@ -45,14 +45,14 @@ imap <C-l> <Right>
 
 if !exists('vscode')
 	" imap {<CR> {}<Left><CR>
-	inoremap { {}<Left>
-	inoremap ( ()<Left>
-	inoremap [ []<Left>
-	inoremap " ""<Left>
-	inoremap {} {}
-	inoremap () ()
-	inoremap [] []
-	inoremap "" ""
+	" inoremap { {}<Left>
+	" inoremap ( ()<Left>
+	" inoremap [ []<Left>
+	" inoremap " ""<Left>
+	" inoremap {} {}
+	" inoremap () ()
+	" inoremap [] []
+	" inoremap "" ""
 
 	" stop search highlighting on return in normal mode
 	nnoremap <silent> <CR> :noh<CR><CR>
