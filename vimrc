@@ -26,10 +26,13 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " Move to the next buffer
 nmap <silent> <C-l> :bnext<CR>
+tmap <silent> <C-l> <C-W>:bnext<CR>
 " Move to the previous buffer
 nmap <silent> <C-h> :bprevious<CR>
+tmap <silent> <C-h> <C-W>:bprevious<CR>
 " quit current buffer and move to previous
 nmap <silent> <C-q> :b# \| bd#<CR>
+tmap <silent> <C-q> <C-W>:b# \| bd#<CR>
 
 nmap <C-S> :w<CR>
 nmap <C-f> za
@@ -170,6 +173,7 @@ let g:qs_enable=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|term://|undotree|vimfiler'
 let g:airline#extensions#windowswap#enabled = 1
 
 set number
