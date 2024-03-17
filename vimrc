@@ -229,6 +229,12 @@ if !exists('vscode')
 	}
 endif
 
+augroup autofoldcolumn
+	au!
+
+	au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+augroup END
+
 " #################### STARTIFY ####################
 let g:startify_session_persistence = 1
 let g:startify_session_before_save = [
@@ -290,6 +296,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'unblevable/quick-scope'
 Plug 'mhinz/vim-startify'
 Plug 'wesQ3/vim-windowswap'
+Plug 'benknoble/vim-auto-origami'
 
 call plug#end()
 " ##########################################################################
