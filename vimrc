@@ -211,6 +211,8 @@ set sessionoptions-=options
 set sessionoptions-=resize
 " set sessionoptions-=buffers
 
+set fileformat=unix
+
 set expandtab
 set tabstop=4
 set shiftwidth=4
