@@ -298,6 +298,7 @@ Plug 'unblevable/quick-scope'
 Plug 'mhinz/vim-startify'
 Plug 'wesQ3/vim-windowswap'
 Plug 'benknoble/vim-auto-origami'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 " ##########################################################################
