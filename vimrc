@@ -38,6 +38,8 @@ nmap <C-S> :w<CR>
 nmap <C-f> za
 imap <C-z> <C-o>zz
 
+nmap <C-Tab> :set et! et?<CR>
+
 imap <C-h> <Left>
 imap <C-j> <Down>
 imap <C-k> <Up>
