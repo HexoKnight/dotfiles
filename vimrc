@@ -219,6 +219,7 @@ set foldcolumn=4
 set list
 set listchars=tab:\ \ ,trail:-,extends:»,precedes:«
 
+set fileformat=unix
 if !exists('vscode')
 	autocmd FileType vim {
 		setlocal noexpandtab
