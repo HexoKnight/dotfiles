@@ -148,7 +148,7 @@ function GetFoldLevel(lnum)
 			let retval = "s1"
 		endif
 	endif
-	
+
 	call cursor(old_line, old_col)
 	call winrestview(view)
 	return retval
