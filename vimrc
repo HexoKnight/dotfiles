@@ -218,14 +218,24 @@ set tabstop=4
 set shiftwidth=4
 " set foldmethod=syntax
 set foldcolumn=4
-set list
-set listchars=tab:\ \ ,trail:-,extends:»,precedes:«
 
-set fileformat=unix
+function CalculateTab()
+	set listchars=tab:\|\ ,trail:-,extends:»,precedes:«
+	if &expandtab
+		let l:spaces = repeat("\ ", &shiftwidth - 1)
+		let &listchars .= ",leadmultispace:\|"
+		let &listchars .= l:spaces
+	endif
+endfunction
+
+set list
+augroup recalculatetab
+	au!
+	au CursorHold,BufWinEnter,WinEnter * call CalculateTab()
+augroup END
 
 augroup autofoldcolumn
 	au!
-
 	au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 augroup END
 
