@@ -220,15 +220,6 @@ set list
 set listchars=tab:\ \ ,trail:-,extends:»,precedes:«
 
 set fileformat=unix
-if !exists('vscode')
-	autocmd FileType vim {
-		setlocal noexpandtab
-	}
-	autocmd FileType sh {
-		setlocal noexpandtab
-		set fileformat=unix
-	}
-endif
 
 augroup autofoldcolumn
 	au!
