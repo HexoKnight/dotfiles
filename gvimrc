@@ -20,6 +20,16 @@ set guicursor=
 	\a:blinkon0,
 	\o:blinkwait1-blinkoff150-blinkon175,
 
+set termguicolors
+" defaults from :echo term_getansicolors(N)
+let g:ansi_colors = [
+	\'#000000', '#e00000', '#00e000', '#e0e000', '#0000e0', '#e000e0', '#00e0e0', '#e0e0e0',
+	\'#808080', '#ff4040', '#40ff40', '#ffff40', '#4040ff', '#ff40ff', '#40ffff', '#ffffff']
+let g:ansi_colors[4] = '#4040ff'
+let g:ansi_colors[12] = '#8080ff'
+
+let g:terminal_ansi_colors = g:ansi_colors
+
 hi QuickScopePrimary gui=underline gui=standout
 hi QuickScopeSecondary gui=underline
 
