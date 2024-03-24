@@ -86,6 +86,7 @@ hi TabLine gui=NONE
 hi Folded guibg=gray10
 hi FoldColumn guibg=gray10
 hi SignColumn guibg=gray15
+hi SpecialKey guifg='royalblue4'
 
 "hi SpecialKey     term=bold ctermfg=4
 "hi NonText        term=bold cterm=bold ctermfg=4
