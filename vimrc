@@ -222,11 +222,11 @@ set shiftwidth=4
 set foldcolumn=4
 
 function CalculateTab()
-	set listchars=tab:\|\ ,trail:-,extends:»,precedes:«
-	if &expandtab
+	let &l:listchars="tab:\|\ ,trail:-,extends:»,precedes:«"
+	if &l:expandtab
 		let l:spaces = repeat("\ ", &shiftwidth - 1)
-		let &listchars .= ",leadmultispace:\|"
-		let &listchars .= l:spaces
+		let &l:listchars .= ",leadmultispace:\|"
+		let &l:listchars .= l:spaces
 	endif
 endfunction
 
