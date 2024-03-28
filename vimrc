@@ -31,10 +31,46 @@ tmap <silent> <C-l> <C-W>:bnext<CR>
 nmap <silent> <C-h> :bprevious<CR>
 tmap <silent> <C-h> <C-W>:bprevious<CR>
 " quit current buffer and move to previous
-nmap <silent> <C-q> :b# \| bd#<CR>
-tmap <silent> <C-q> <C-W>:b# \| bd#<CR>
-nmap <silent> g<C-q> :b# \| bd!#<CR>
-tmap <silent> g<C-q> <C-W>:b# \| bd!#<CR>
+nmap <silent> <C-q> :BClose<CR>
+tmap <silent> <C-q> <C-W>:Bclose<CR>
+
+function s:BClose()
+	if(&modified)
+		let answer = confirm("This buffer has been modified. Are you sure you want to delete it?", "&Yes\n&No", 2)
+		if(answer != 1)
+			return
+		endif
+	endif
+	" if(!buflisted(winbufnr(0)))
+	"   bd!
+	"   return
+	" endif
+	let currentBuffer = bufnr("%")
+	windo call s:GotoLastListedBuffer(currentBuffer)
+	execute "bdelete!".currentBuffer
+endfunction
+function s:GotoLastListedBuffer(bufferToBeDeleted)
+	if bufnr("%") == a:bufferToBeDeleted
+		if buflisted(bufnr("#"))
+			buffer #
+			return
+		endif
+		let [jumplist, currentIndex] = getjumplist()
+		let jumplist = jumplist[:currentIndex - 1]
+		call reverse(jumplist)
+		for jump in jumplist
+			if jump['bufnr'] != a:bufferToBeDeleted && buflisted(jump['bufnr'])
+				execute "buffer!" jump['bufnr']
+				return
+			endif
+		endfor
+		" reached the start of the jumplist without finding a suitable
+		" buffer so start Startify
+		Startify
+	endif
+endfunction
+
+command BClose call s:BClose()
 
 nmap <C-t> :term ++curwin<CR>
 tmap <C-t> <C-W>:term ++curwin<CR>
