@@ -33,6 +33,11 @@ tmap <silent> <C-h> <C-W>:bprevious<CR>
 " quit current buffer and move to previous
 nmap <silent> <C-q> :b# \| bd#<CR>
 tmap <silent> <C-q> <C-W>:b# \| bd#<CR>
+nmap <silent> g<C-q> :b# \| bd!#<CR>
+tmap <silent> g<C-q> <C-W>:b# \| bd!#<CR>
+
+nmap <C-t> :term ++curwin<CR>
+tmap <C-t> <C-W>:term ++curwin<CR>
 
 nmap <C-S> :w<CR>
 nmap <C-f> za
