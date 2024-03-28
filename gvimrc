@@ -32,6 +32,7 @@ let g:terminal_ansi_colors = g:ansi_colors
 
 hi QuickScopePrimary gui=underline gui=standout
 hi QuickScopeSecondary gui=underline
+hi HighlightedyankRegion guibg=yellow4
 
 " augroup qs_colors
 "   autocmd!

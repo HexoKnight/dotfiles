@@ -265,6 +265,8 @@ let g:startify_lists = [
 	" \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
 " ##################################################
 
+let g:highlightedyank_highlight_duration = 400
+
 "set mouse=
 cabbr <expr> %% expand('%:p:h')
 cabbr wso w \| so %
@@ -309,6 +311,7 @@ Plug 'mhinz/vim-startify'
 Plug 'wesQ3/vim-windowswap'
 Plug 'benknoble/vim-auto-origami'
 Plug 'tpope/vim-sleuth'
+Plug 'machakann/vim-highlightedyank'
 
 call plug#end()
 " ##########################################################################
