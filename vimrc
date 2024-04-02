@@ -32,7 +32,7 @@ nmap <silent> <C-h> :bprevious<CR>
 tmap <silent> <C-h> <C-W>:bprevious<CR>
 " quit current buffer and move to previous
 nmap <silent> <C-q> :BClose<CR>
-tmap <silent> <C-q> <C-W>:Bclose<CR>
+tmap <silent> <C-q> <C-W>:BClose<CR>
 
 function s:BClose()
 	if(&modified)
