@@ -45,9 +45,11 @@ function s:BClose()
 	"   bd!
 	"   return
 	" endif
+	let currentWindow = winnr()
 	let currentBuffer = bufnr("%")
-	windo call s:GotoLastListedBuffer(currentBuffer)
+	keepjumps windo call s:GotoLastListedBuffer(currentBuffer)
 	execute "bdelete!".currentBuffer
+	execute "keepjumps ".currentWindow."wincmd w"
 endfunction
 function s:GotoLastListedBuffer(bufferToBeDeleted)
 	if bufnr("%") == a:bufferToBeDeleted
