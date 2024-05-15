@@ -223,6 +223,7 @@ let g:airline#extensions#windowswap#enabled = 1
 
 set number
 set hidden
+set showcmd
 set incsearch
 set hlsearch
 " stop search highlighting turning on after a .vimrc reload
