@@ -266,10 +266,15 @@ set shiftwidth=4
 set foldcolumn=4
 
 function CalculateTab()
-	let &l:listchars="tab:\|\ ,trail:-,extends:»,precedes:«"
+	" other tab chars: ▏
+	" foobar
+	"   ▏
+	"   ▏
+	" barfoo
+	let &l:listchars="tab:│\ ,trail:-,extends:»,precedes:«"
 	if &l:expandtab
 		let l:spaces = repeat("\ ", &shiftwidth - 1)
-		let &l:listchars .= ",leadmultispace:\|"
+		let &l:listchars .= ",leadmultispace:│"
 		let &l:listchars .= l:spaces
 	endif
 endfunction
