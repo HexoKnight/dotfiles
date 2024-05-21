@@ -290,6 +290,67 @@ augroup autofoldcolumn
 	au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 augroup END
 
+function DetectNixShebang()
+	if did_filetype()
+		return
+	endif
+	if getline(1) !~# '^#!\s*\S*/bin/env\s\+nix\s*\>'
+		return
+	endif
+	let fullcommand = "nix"
+	let linenum = 2
+	while 1
+		let nextargs = matchstr(getline(linenum), '\(^#!\s*nix\s*\)\@<=\S.*$')
+		if empty(nextargs)
+			break
+		endif
+		let fullcommand = fullcommand . ' ' . nextargs
+		let linenum = linenum + 1
+	endwhile
+	function! Getfirstsubmatchor(str, m, default = '')
+		let list = a:str->matchlist(a:m)
+		if empty(list)
+			return a:default
+		else
+			return list[1]
+		endif
+	endfunction
+	let trymatchtypes = [
+	\	{str -> str->match('\v^nix\s+run\s+') == -1 ? '' : Getfirstsubmatchor(str, '\v\s%([^#]&\S)*#(\S*)%(\s|$)') },
+	\	{str -> str->match('\v^nix\s+shell\s+') == -1 ? '' : Getfirstsubmatchor(str, '\v%(-c|--command)\s+(\S*)%(\s|$)', $SHELL) },
+	\]
+	for Trymatchtype in trymatchtypes
+		let possiblematch = Trymatchtype(fullcommand)
+		if !empty(possiblematch)
+			let interpreter = possiblematch
+			break
+		endif
+	endfor
+
+	if !exists("interpreter")
+		return
+	endif
+
+	let fullshebang = (interpreter->match('/') == -1 ? '#!/bin/env ' : '#!') . interpreter
+	" would prefer to be able to directly call
+	" dist#script#DetectFromHashBang(fullshebang)
+	" to avoid all this malarky but oh well
+	let currentbuffer = bufnr('%')
+	exec "e " . tempname()
+	let tempbuffer = bufnr('%')
+	call append(0, fullshebang)
+	call dist#script#DetectFiletype()
+	let acfiletype = &ft
+	exec "buffer! " . currentbuffer
+	exec "bwipeout! " . tempbuffer
+	let &ft = acfiletype
+endfunction
+
+augroup nixshebangfiletype
+	au!
+	au BufNewFile,BufRead * call DetectNixShebang()
+augroup END
+
 " #################### STARTIFY ####################
 let g:startify_session_persistence = 1
 let g:startify_session_before_save = [
