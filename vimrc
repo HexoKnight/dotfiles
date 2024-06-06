@@ -198,8 +198,14 @@ function GetFoldLevel(lnum)
 	call winrestview(view)
 	return retval
 endfunction
-set foldmethod=expr
 set foldexpr=GetFoldLevel(v:lnum)
+
+autocmd FileType rust setlocal foldmethod=expr
+
+set foldmethod=syntax
+let g:ip_skipfold=1
+let g:vimsyn_folding="af"
+let g:sh_fold_enabled=7
 
 " #########################
 
@@ -417,6 +423,8 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'benknoble/vim-auto-origami'
 Plug 'tpope/vim-sleuth'
 Plug 'machakann/vim-highlightedyank'
+Plug 'justinmk/vim-ipmotion'
+Plug 'Konfekt/FastFold'
 
 call plug#end()
 " ##########################################################################
