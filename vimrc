@@ -7,7 +7,7 @@ set runtimepath=
 if exists('vscode')
 	set viminfo+=n~/.vim/nviminfo
 else
-	set viminfo+=%,n~/.vim/viminfo
+	set viminfo+=n~/.vim/viminfo
 endif
 
 " #################### MAPPINGS ####################
