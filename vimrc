@@ -100,7 +100,7 @@ if !exists('vscode')
 	" inoremap "" ""
 
 	" stop search highlighting on return in normal mode
-	nnoremap <silent> <CR> :noh<CR><CR>
+	nnoremap <silent> # :noh<CR>
 endif
 
 " nmap <silent> <C-S> :new \| Startify<CR>
