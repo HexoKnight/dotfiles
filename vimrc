@@ -248,6 +248,9 @@ set updatetime=1000
 " set completeopt=longest,menuone
 set belloff=wildmode,error,cursor
 
+set wildmenu
+set wildmode=longest,full
+
 call mkdir($HOME."/.vim/backup", "p")
 call mkdir($HOME."/.vim/swap", "p")
 call mkdir($HOME."/.vim/undo", "p")
