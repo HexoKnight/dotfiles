@@ -107,6 +107,8 @@ endif
 
 " ########## Coc ##########
 
+if executable("node")
+
 autocmd FileType rust setlocal updatetime=100
 autocmd FileType rust setlocal foldnestmax=2
 autocmd FileType rust nnoremap <silent> <Esc> :call ShowDocumentation(0)<CR>
@@ -172,6 +174,8 @@ function! ShowDocumentation(fallback_K)
 endfunction
 
 let g:airline#extensions#coc#enabled = 1
+
+endif
 
 function GetFoldLevel(lnum)
 	let curpos = getcurpos()
@@ -404,8 +408,10 @@ call plug#begin('~/.vim/plugged')
 
 if !exists('vscode')
 	Plug 'rust-lang/rust.vim'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+	if executable("node")
+		Plug 'neoclide/coc.nvim', {'branch': 'release'}
+		Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+	endif
 	" Plug 'ycm-core/YouCompleteMe'
 	Plug 'jclsn/glow.vim'
 	Plug 'vimsence/vimsence'
